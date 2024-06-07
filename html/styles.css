@@ -1,0 +1,150 @@
+/* styles.css */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #141414;
+    color: #ffffff;
+}
+
+header {
+    background-color: #1f1f1f;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+header .logo img {
+    height: 40px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background-color: #1f1f1f;
+    padding: 10px 20px;
+    text-align: center;
+}
+.content-section {
+    margin-bottom: 40px;
+}
+
+.content-section h2 {
+    margin-bottom: 20px;
+}
+
+.card-container {
+    display: flex;
+    gap: 20px;
+    overflow-x: scroll;
+}
+
+.card {
+    background-color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 200px;
+    flex: 0 0 auto;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.card h3 {
+    padding: 10px;
+    font-size: 1em;
+    margin: 0;
+}
+.btn{
+    width:60%;
+    height:150%;
+    background-color: rgb(91, 40, 62);
+    color:white;
+    font-size: 1.2rem;
+    border-radius:10px 0 10px 0;
+}
+
+.btn:hover{
+    font-size: 1.3rem;
+    background-color: rgb(111, 17, 58);
+}
+
+.button-with-icon {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #1e90ff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.button-with-icon .icon {
+    margin-right: 10px;
+}
+
+.content-section {
+    margin-bottom: 40px;
+}
+
+.content-section h2 {
+    margin-bottom: 20px;
+}
+
+.card-container {
+    display: flex;
+    gap: 20px;
+    overflow-x: scroll;
+}
+
+.card {
+    background-color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 200px;
+    flex: 0 0 auto;
+    text-decoration: none; /* Supprime la décoration de texte par défaut des liens */
+    color: inherit; /* Hérite la couleur du texte du parent */
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.card h3 {
+    padding: 10px;
+    font-size: 1em;
+    margin: 0;
+}
+
+.card:hover {
+    background-color: #444; /* Change la couleur de fond au survol */
+}

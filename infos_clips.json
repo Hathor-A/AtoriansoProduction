@@ -1,0 +1,39 @@
+{
+    "Clips": [
+      {
+        "id": 1,
+        "nom": "AFRI, La maison du bonheur",
+        "durée": 250.2,
+        "categorie": "Clip",
+        "genre": "RnB",
+        "image": "/images/Ator/AtoProd.jpg",
+        "video": "/videos/Atoprod/AFRI La maison du bonheur.mp4"
+      },
+      {
+        "id": 2,
+        "nom": "Clip - RAVAGE - Dans l'Ame - feat KAZODAH -",
+        "durée": 246,
+        "categorie": "Clip",
+        "genre": "Rap",
+        "image": "/images/Ator/AtoProd.jpg",
+        "video": "/videos/Atoprod/Clip - RAVAGE - Dans l'Ame - feat KAZODAH -.mp4"
+      },
+      {
+        "id": 3,
+        "nom": "Clip Install Confluence 05 HD",
+        "durée": 86.4,
+        "categorie": "Pub",
+        "genre": "Electro",
+        "image": "/images/Ator/AtoProd.jpg",
+        "video": "/videos/Atoprod/Clip Install Confluence 05 HD.mp4"
+      },
+      {
+        "id": 4,
+        "nom": "Clip Block C SANGPLEUR",
+        "durée": 330.6,
+        "categorie": "Clip",
+        "genre": "Rap",
+        "image": "/images/Ator/AtoProd.jpg",
+        "video": "/videos/Atoprod/Clip Block C SANGPLEUR.mp4"
+      }
+    ]}
