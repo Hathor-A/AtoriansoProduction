@@ -6,7 +6,7 @@
         "durée": 250.2,
         "categorie": "Clip",
         "genre": "RnB",
-        "image": "/images/Ator/AtoProd.jpg",
+        "image": "/images/Ator/AtoProd.webp",
         "video": "/videos/Atoprod/AFRI La maison du bonheur.mp4"
       },
       {
@@ -15,7 +15,7 @@
         "durée": 246,
         "categorie": "Clip",
         "genre": "Rap",
-        "image": "/images/Ator/AtoProd.jpg",
+        "image": "/images/Ator/AtoProd.webp",
         "video": "/videos/Atoprod/Clip - RAVAGE - Dans l'Ame - feat KAZODAH -.mp4"
       },
       {
@@ -24,7 +24,7 @@
         "durée": 86.4,
         "categorie": "Pub",
         "genre": "Electro",
-        "image": "/images/Ator/AtoProd.jpg",
+        "image": "/images/Ator/AtoProd.webp",
         "video": "/videos/Atoprod/Clip Install Confluence 05 HD.mp4"
       },
       {
@@ -33,7 +33,16 @@
         "durée": 330.6,
         "categorie": "Clip",
         "genre": "Rap",
-        "image": "/images/Ator/AtoProd.jpg",
+        "image": "/images/Ator/AtoProd.webp",
         "video": "/videos/Atoprod/Clip Block C SANGPLEUR.mp4"
+      },
+      {
+        "id": 5,
+        "nom": "Teaser KM Prod A1WGP",
+        "durée": 330.6,
+        "categorie": "Teaser",
+        "genre": "Sport",
+        "image": "/images/Ator/AtoProd.webp",
+        "video": "/videos/Atoprod/Teaser KM Prod A1WGP.mp4"
       }
     ]}
