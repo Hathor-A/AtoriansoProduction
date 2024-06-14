@@ -57,15 +57,18 @@ document.addEventListener("DOMContentLoaded", () => {
 /*
 function clipSelected(content) {
   let url =
-    "https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" +
+    "./infos_Clips" +
     content;
   fetch(url).then((infos_clips) =>
     infos_clips.json().then((data) => {
       console.log(data);
-      document.querySelector("#home").innerHTML = data.main;
+      document.querySelector("#index.html").innerHTML = data.main;
       document.querySelector("#clips").innerHTML = data.main;
       document.querySelector("#originals").innerHTML = data.main;
       document.querySelector("#search").innerHTML = data.main;
+      document.querySelector("#shows").innerHTML = data.main;
+      document.querySelector("#teasers").innerHTML = data.main;
+      document.querySelector("#publicité").innerHTML = data.main;
       document.getElementById("card-container").style.display = "card";
     })
   );

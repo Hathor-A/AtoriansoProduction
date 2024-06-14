@@ -1,0 +1,600 @@
+           
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atorianso Production</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/reset.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img id="Logo Prod" src="./images/Ator/AtoProd.webp" alt="Un logo" title="Logo Ato" height="200">
+        </div>
+        <nav>
+<!--<ul id="filters-nav">-->
+            <ul id="filters-nav">
+                <li><a href="/AtoProd.html"><img src="icons/accueil.png" class="icon">Accueil</a></li>
+                <li><a href="/html/shows.html"><img src="icons/cercle-de-jeu.png" class="icon">Publicités</a></li>
+                <li><a href="/html/clips.html"><img src="icons/bouton-facetime.png" class="icon">Clips</a></li>
+                <li><a href="/html/teasers.html"><img src="icons/bouton-jouer.png" class="icon">Teasers</a></li>
+                <li><a href="/html/spots.html"><img src="/icons/info.png" class="icon">Spots</a></li>
+                <li><a href="/html/originals.html"><img src="icons/etoile.png" class="icon">Originaux</a></li>
+                <li><a href="/html/search.html"><img src="icons/loupe.png" class="icon">Recherche</a></li>
+                <?php
+                require 'config.php';
+                    $sql = "SELECT icon FROM users WHERE username = :username";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bindParam(':username', $_SESSION['username']);
+                    $stmt->execute();
+                    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $iconPath = $user['icon'];
+                if (isset($_SESSION['username'])) {
+                    echo '<li><a href="/BasSQL/profile.php"><img src="' . $iconPath . '" alt="User Icon" style="width:30px;height:30px;"></a></li>';
+                    echo '<li><a href="/BasSQL/logout.php">Déconnexion</a></li>';
+                } else {
+                    echo '<li><a href="/BasSQL/login.php">Connexion</a></li>';
+                    echo '<li><a href="/BasSQL/register.php">Inscription</a></li>';
+                }
+                ?>
+            </ul>
+        </nav>
+    </header>
+    <div id="side-nav" class="side-nav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="AtoProd.html">Accueil</a>
+        <a href="/basSQL/contact.php">Contact</a>
+        <a href="/basSQL/login.php">Connexion</a>
+        <a href="/basSQL/registers.php">Enregistrement</a>
+        <a href="/credits.html">Crédits</a>
+        <a href="/links.html">Links</a>
+    </div>
+    <span class="openbtn" onclick="openNav()">&#9776; Menu</span>
+        <button onclick="scrollToTop()" id="btnScrollToTop" title="Remonter en haut de la page">&#8593</button>
+    <main>
+            <section class="content-section" id="shows">
+                <h2>Clips Populaires</h2>
+                <div class="card-container">
+                    <div class="card">
+                        <a href="/show_video/RAVAGE_Dans_l_Ame.html">
+                            <img src="/images/Ator/Atorianso.webp" alt="RAVAGE - Dans l'Ame">
+                            <h3>RAVAGE - Dans l'Ame - feat KAZODAH</h3>
+                        </a>
+                    </div>
+                    <div class="card">
+                        <a href="/show_video/AFRI_La_Maison_du_Bonheur.html">
+                            <img src="/images/Ator/Atorianso.webp" alt="AFRI, La maison du bonheur">
+                            <h3>AFRI - La maison du bonheur</h3>
+                        </a>
+                    </div>
+                    <div class="card">
+                        <a href="/show_video/Art_on_Ice_2003.html">
+                        <img src="./images/Ator/Atorianso.webp" alt="Art on Ice 2003">
+                        <h3>Art on Ice 2003</h3>
+                    </a>
+                    </div>
+                    <div class="card">
+                        <a href="/show_video/Clip AFRI Je me demande.html">
+                        <img src="/images/Ator/Atorianso.webp" alt="Clip AFRI Je me demande">
+                        <h3>AFRI - Je me demande</h3>
+                    </a>
+                    </div>
+                    <div class="card">
+                        <a href="/show_video/Clip Block C SANGPLEUR.html">
+                        <img src="/images/Ator/Atorianso.webp" alt="Clip Block C SANGPLEUR">
+                        <h3>SANGPLEUR - Block C </h3>
+                    </a>
+                    </div>
+                    <div class="card">
+                        <a href="/show_video/Clip Lyrical G Music  LYRICALG.html">
+                        <img src="/images/Ator/Atorianso.webp" alt="Clip Lyrical G Music  LYRICALG">
+                        <h3>LYRICALG - Lyrical G Music</h3>
+                    </a>
+                    </div>
+                    <div class="card">
+                        <a href="/show_video/Clip MANIGUN La verte la C.html">
+                        <img src="/images/Ator/Atorianso.webp" alt="Clip MANIGUN La verte la C">
+                        <h3>MANIGUN - La Verte la C</h3>
+                    </a>
+                    </div>
+                    <div class="card">
+                        <a href="/show_video/Clip On M'a Dit 22PROD.html">
+                        <img src="/images/Ator/Atorianso.webp" alt="Clip On M'a Dit 22PROD">
+                        <h3>22PROD - On M'a Dit</h3>
+                    </a>
+                    </div>
+                    <div class="card">
+                        <a href="/show_video/Clip Sale Epoque ARAMDA  Version MP4 Standard.html">
+                        <img src="/images/Ator/Atorianso.webp" alt="Clip Sale Epoque ARAMDA  Version MP4 Standard">
+                        <h3>ARAMDA - Sale Epoque (Version Standard)</h3>
+                    </a>
+                    </div>
+                    <div class="card">
+                        <a href="/show_video/clip-bridget-si-tu-m-aimes.html">
+                        <img src="/images/Ator/Atorianso.webp" alt="clip-bridget-si-tu-m-aimes">
+                        <h3>BRIDGET - Si Tu m'Aimes</h3>
+                    </a>
+                    </div>
+                    <div class="card">
+                        <a href="/show_video/FATJETA Clip.html">
+                        <img src="/images/Ator/Atorianso.webp" alt="FATJETA Clip">
+                        <h3>FATJETA - Le Royaume</h3>
+                    </a>
+                    </div>
+                    <div class="card">
+                        <a href="/show_video/La RAZZIA Clip 1.html">
+                        <img src="/images/Ator/Atorianso.webp" alt="La RAZZIA Clip 1">
+                        <h3>La RAZZIA - Razzia Session</h3>
+                    </a>
+                    </div>
+                    <div class="card">
+                        <a href="/show_video/NOMAK Clip.html">
+                        <img src="/images/Ator/Atorianso.webp" alt="NOMAK Clip">
+                        <h3>NOMAK - Ton Jeu et tes Manières</h3>
+                    </a>
+                    </div>
+                    <div class="card">
+                        <a href="/show_video/startintin 2005.html">
+                        <img src="/images/Ator/Atorianso.webp" alt="StartinBlock 2005">
+                        <h3>StartinBlock - Brack City</h3>
+                    </a>
+                    </div>
+                </div>
+        </section>
+    </main>
+        <section class="content-section_2" id="shows">
+            <h2>Teasers</h2>
+                <div class="card-container">
+                    <div class="card">
+                        <a href="/show_video/Teaser A1WGP Tour_2.html">
+                            <img src="./images/Ator/Atorianso.webp" alt="Teaser A1WGP Tour_2">
+                            <h3>A1WGP Tour 2</h3>
+                        </a>
+                    </div>
+                    <div class="card">
+                        <a href="/show_video/Teaser AFRI Je ME Demande final.html">
+                            <img src="./images/Ator/Atorianso.webp" alt="Teaser AFRI Je Me Demande">
+                            <h3>AFRI - Je Me Demande</h3>
+                        </a>
+                    </div>
+                    <div class="card">
+                        <a href="/show_video/Teaser KM Prod A1WGP.html">
+                            <img src="./images/Ator/Atorianso.webp" alt="Teaser KM Prod A1WGP">
+                            <h3>KM Prod - A1WGP</h3>
+                        </a>
+                    </div>
+                    <div class="card">
+                        <a href="/show_video/Teaser OuhLALA FUTSAL INTW 2015.html">
+                            <img src="./images/Ator/Atorianso.webp" alt="Teaser OuhLALA FUTSAL INTW 2015">
+                            <h3>OuhLALA - FUTSAL ITW 2015</h3>
+                        </a>
+                    </div>
+                    <div class="card">
+                        <a href="/show_video/Teaser PKT 2016 Etape 1 .html">
+                            <img src="./images/Ator/Atorianso.webp" alt="Teaser PKT 2016 Etape 1">
+                            <h3>PKT 2016 - Etape 1</h3>
+                        </a>
+                    </div>
+                    <div class="card">
+                        <a href="/show_video/Teaser Samuel Andoche 2015.html">
+                            <img src="./images/Ator/Atorianso.webp" alt="Teaser Samuel Andoche 2015">
+                            <h3>PKT - Samuel Andoche 2015</h3>
+                        </a>
+                    </div>
+                    <div class="card">
+                        <a href="/show_video/SP 113 Projet DVD.html">
+                            <img src="/images/Ator/Atorianso.webp" alt="SANGPLEUR - 113 Projet">
+                            <h3>SANGPLEUR - 113 Projet</h3>
+                        </a>
+                    </div>
+                    <div class="card">
+                        <a href="/show_video/sp block op.html">
+                            <img src="/images/Ator/Atorianso.webp" alt="SANGPLEUR - Block OP">
+                            <h3>SANGPLEUR - Block OP</h3>
+                        </a>
+                    </div>
+                    <div class="card">
+                        <a href="/show_video/SP Stud A.S 2005.html">
+                            <img src="/images/Ator/Atorianso.webp" alt="SANGPLEUR - Studio A.S">
+                            <h3>SANGPLEUR - Studio A.S</h3>
+                        </a>
+                    </div>
+                    <div class="card">
+                        <a href="/show_video/Teaser Clip Block C sangpleur 2006.html">
+                            <img src="/images/Ator/Atorianso.webp" alt="Teaser Block C SANGPLEUR">
+                            <h3>SANGPLEUR - Block C </h3>
+                        </a>
+                    </div>
+                    <div class="card">
+                        <a href="/show_video/Teaser Clip fais tourner le voalnt 2.html">
+                            <img src="/images/Ator/Atorianso.webp" alt="Teaser - KURSSUS - Fais Tourner le Volant">
+                            <h3>KURSSUS - Fais Tourner le Volant</h3>
+                        </a>
+                    </div>
+                    <div class="card">
+                        <a href="/show_video/Teaser Nomak Clip.html">
+                            <img src="/images/Ator/Atorianso.webp" alt="NOMAK - Ton et tes Manières">
+                            <h3>NOMAK - Ton et tes Manières</h3>
+                        </a>
+                    </div>
+                    <div class="card">
+                        <a href="/show_video/teaser Sangpleur zénith.html">
+                            <img src="/images/Ator/Atorianso.webp" alt="SANGPLEUR - Zénith Nancy">
+                            <h3>SANGPLEUR - Zénith Nancy</h3>
+                        </a>
+                    </div>
+                </div>
+        </section>
+        <section class="content-section_2" id="shows">
+            <h2>Clips</h2>
+            <div class="card-container">
+                <div class="card">
+                    <a href="/show_video/RAVAGE_Dans_l_Ame.html">
+                        <img src="/images/Ator/Atorianso.webp" alt="RAVAGE - Dans l'Ame">
+                        <h3>RAVAGE - Dans l'Ame - feat KAZODAH</h3>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="/show_video/AFRI_La_Maison_du_Bonheur.html">
+                        <img src="/images/Ator/Atorianso.webp" alt="AFRI, La maison du bonheur">
+                        <h3>AFRI - La Maison du Bonheur</h3>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="/show_video/Art_on_Ice_2003.html">
+                    <img src="./images/Ator/Atorianso.webp" alt="Art on Ice 2003">
+                    <h3>Art on Ice 2003</h3>
+                </a>
+                </div>
+                <div class="card">
+                    <a href="/show_video/BENITA Clip.html">
+                    <img src="/images/Ator/Atorianso.webp" alt="BENITA Clip">
+                    <h3>BENITA - La Joie</h3>
+                </a>
+                </div>
+                <div class="card">
+                    <a href="/show_video/Clip AFRI Je me demande.html">
+                    <img src="/images/Ator/Atorianso.webp" alt="Clip AFRI Je me demande">
+                    <h3>AFRI - Je Me Demande</h3>
+                </a>
+                </div>
+                <div class="card">
+                    <a href="/show_video/Clip Block C SANGPLEUR.html">
+                    <img src="/images/Ator/Atorianso.webp" alt="Clip Block C SANGPLEUR">
+                    <h3>SANGPLEUR - Block C</h3>
+                </a>
+                </div>
+                <div class="card">
+                    <a href="/show_video/Clip Lyrical G Music  LYRICALG.html">
+                    <img src="/images/Ator/Atorianso.webp" alt="Clip Lyrical G Music  LYRICALG">
+                    <h3>LYRICALG - Lyrical G Music</h3>
+                </a>
+                </div>
+                <div class="card">
+                    <a href="/show_video/Clip MANIGUN La verte la C.html">
+                    <img src="/images/Ator/Atorianso.webp" alt="Clip MANIGUN La verte la C">
+                    <h3>MANIGUN - La Verte la C</h3>
+                </a>
+                </div>
+                <div class="card">
+                    <a href="/show_video/Clip On M'a Dit 22PROD.html">
+                    <img src="/images/Ator/Atorianso.webp" alt="Clip On M'a Dit 22PROD">
+                    <h3>22PROD - On M'a Dit</h3>
+                </a>
+                </div>
+                <div class="card">
+                    <a href="/show_video/Clip Sale Epoque ARAMDA  Version MP4 Standard.html">
+                    <img src="/images/Ator/Atorianso.webp" alt="Clip Sale Epoque ARAMDA  Version MP4 Standard">
+                    <h3>ARAMDA - Sale Epoque (Version Standard)</h3>
+                </a>
+                </div>
+                <div class="card">
+                    <a href="/show_video/Clip Tropic Machine Tour Lyon 2005.html">
+                    <img src="/images/Ator/Atorianso.webp" alt="Clip Tropic Machine Tour Lyon 2005">
+                    <h3>Tropic Machine Tour Lyon 2005</h3>
+                </a>
+                </div>
+                <div class="card">
+                    <a href="/show_video/clip-bridget-its-my-life.html">
+                    <img src="/images/Ator/Atorianso.webp" alt="clip-bridget-its-my-life">
+                    <h3>BRIDGET - Its My Life</h3>
+                </a>
+                </div>
+                <div class="card">
+                    <a href="/show_video/clip-bridget-si-tu-m-aimes.html">
+                    <img src="/images/Ator/Atorianso.webp" alt="clip-bridget-si-tu-m-aimes">
+                    <h3>BRIDGET - Si Tu m'Aimes</h3>
+                </a>
+                </div>
+                <div class="card">
+                    <a href="/show_video/FATJETA Clip.html">
+                    <img src="/images/Ator/Atorianso.webp" alt="FATJETA Clip">
+                    <h3>FATJETA - Le Royaume</h3>
+                </a>
+                </div>
+                <div class="card">
+                    <a href="/show_video/La Razzia - In the place to be.html">
+                    <img src="/images/Ator/Atorianso.webp" alt="La Razzia - In the place to be">
+                    <h3>La Razzia - In the place to be</h3>
+                </a>
+                </div>
+                <div class="card">
+                    <a href="/show_video/La RAZZIA Clip 1.html">
+                    <img src="/images/Ator/Atorianso.webp" alt="La RAZZIA Clip 1">
+                    <h3>La RAZZIA - Razzia Session</h3>
+                </a>
+                </div>
+                <div class="card">
+                    <a href="/show_video/NOMAK Clip.html">
+                    <img src="/images/Ator/Atorianso.webp" alt="NOMAK Clip">
+                    <h3>NOMAK - Ton Jeu et tes Manières</h3>
+                </a>
+                </div>
+                <div class="card">
+                    <a href="/show_video/startintin 2005.html">
+                    <img src="/images/Ator/Atorianso.webp" alt="StartinBlock 2005">
+                    <h3>StartinBlock - Brack City</h3>
+                </a>
+                </div>
+                <div class="card">
+                    <a href="/show_video/Clip Fran6 NeverEver 07.html">
+                        <img src="/images/Ator/Atorianso.webp" alt="Logo ATO simple blan">
+                        <h3>Francis Brasilis - NeverEver</h3>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="/show_video/Selecetr - Allez Les Lyonnais - Clip 2006.html">
+                        <img src="/images/Ator/Atorianso.webp" alt="Selecetr - Allez Les Lyonnais">
+                        <h3>Selecetr - Allez Les Lyonnais</h3>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="/show_video/Spot Egerie OUHLALA 2015.html">
+                        <img src="/images/Ator/Atorianso.webp" alt="Egerie OUHLALA 2015">
+                        <h3>Egerie OUHLALA 2015</h3>
+                    </a>
+                </div>
+            </div>
+        </section>
+    <section class="content-section_2" id="shows">
+        <h2>Spots RAVAGE</h2>
+        <div class="card-container">
+            <div class="card">
+                <a href="/show_video/Clip WechTV Brignais.html" class="card">
+                    <img src="/images/Ator/Atorianso.webp" alt="Clip WechTV Brignais">
+                    <h3>RAVAGE - WechTV Brignais</h3>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/videos/RAVAGE Video/Clip WechTV Caluire.html" class="card">
+                    <img src="/images/Ator/Atorianso.webp" alt="Clip WechTV Caluire">
+                    <h3>RAVAGE - WechTV Caluire</h3>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/show_video/Clip WechTV Champlong.html" class="card">
+                    <img src="/images/Ator/Atorianso.webp" alt="Clip WechTV Champlong">
+                    <h3>RAVAGE - WechTV Champlong</h3>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/show_video/Clip WechTV Corbas.html" class="card">
+                    <img src="/images/Ator/Atorianso.webp" alt="Clip WechTV Corbas">
+                    <h3>RAVAGE - WechTV Corbas</h3>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/show_video/Clip WechTV Feyzin.html" class="card">
+                    <img src="/images/Ator/Atorianso.webp" alt="Clip WechTV Feyzin">
+                    <h3>RAVAGE - WechTV Feyzin</h3>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/show_video/Clip WechTV Gerland 2.html" class="card">
+                    <img src="/images/Ator/Atorianso.webp" alt="Clip WechTV Gerland 2">
+                    <h3>RAVAGE - WechTV Gerland 2</h3>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/show_video/Clip WechTV Mermoz.html" class="card">
+                    <img src="/images/Ator/Atorianso.webp" alt="Clip WechTV Mermoz">
+                    <h3>RAVAGE - WechTV Mermoz</h3>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/show_video/Clip WechTV Meyzieux.html" class="card">
+                    <img src="/images/Ator/Atorianso.webp" alt="Clip WechTV Meyzieux">
+                    <h3>RAVAGE - WechTV Meyzieux</h3>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/show_video/Clip WechTV Mions les Brosses.html" class="card">
+                    <img src="/images/Ator/Atorianso.webp" alt="Clip WechTV Mions les Brosses">
+                    <h3>RAVAGE - WechTV Mions les Brosses</h3>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/show_video/Clip WechTV Moulin a vent.html" class="card">
+                    <img src="/images/Ator/Atorianso.webp" alt="Clip WechTV Moulin a vent">
+                    <h3>RAVAGE - WechTV Moulin a vent</h3>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/show_video/Clip WechTV Pierre B.html" class="card">
+                    <img src="/images/Ator/Atorianso.webp" alt="Clip WechTV Pierre B">
+                    <h3>RAVAGE - WechTV Pierre B</h3>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/show_video/Clip WechTV Rilleux.html" class="card">
+                    <img src="/images/Ator/Atorianso.webp" alt="Clip WechTV Rilleux">
+                    <h3>RAVAGE - WechTV Rilleux</h3>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/show_video/Clip WechTV Villefranche.html" class="card">
+                    <img src="/images/Ator/Atorianso.webp" alt="Clip WechTV Villefranche">
+                    <h3>RAVAGE - WechTV Villefranche</h3>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/show_video/Logo Title.html" class="card">
+                    <img src="/images/Ator/Atorianso.webp" alt="Logo Title WechTV">
+                    <h3>RAVAGE - Logo Title WechTV</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section class="content-section_2" id="shows">
+        <h2>Publicités</h2>
+            <div class="card-container">
+                <div class="card">
+                    <a href="/show_video/Pub B.O.B.html">
+                        <img src="/images/Ator/Atorianso.webp" alt="Pub B.O.B">
+                        <h3>B.O.B</h3>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="/show_video/Clip Install Confluence 05 HD.html">
+                        <img src="./images/Ator/Atorianso.webp" alt="Clip Install Confluence 05 HD">
+                        <h3>New-Yorker - Install Confluence</h3>
+                    </a>
+                </div>
+                    <div class="card">
+                        <a href="/show_video/PUB eau BELLECOUR.html">
+                            <img src="/images/Ator/Atorianso.webp" alt="PUB eau BELLECOUR">
+                            <h3>PUB eau de BELLECOUR</h3>
+                        </a>
+                    </div>
+                    <div class="card">
+                        <a href="/show_video/Spot Egerie OuhLaLa.html">
+                            <img src="/images/Ator/Atorianso.webp" alt="Spot Egerie OuhLaLa">
+                            <h3>Spot Egerie OuhLaLa</h3>
+                        </a>
+                    </div>
+                    <div class="card">
+                        <a href="/show_video/KRUPS Video EVIDENCE 2017.html">
+                            <img src="/images/Ator/Atorianso.webp" alt="KRUPS Video EVIDENCE 2017">
+                            <h3>KRUPS - EVIDENCE 2017</h3>
+                        </a>
+                    </div>
+            </div>
+    </section>
+    <section class="content-section_2" id="shows">
+        <h2>Ogininals</h2>
+        <div class="card-container">
+            <div class="card">
+                <a href="/show_video/Clip- DREAMKATCH- Souvenir 2- 2002[43].html">
+                    <img src="/images/Ator/Atorianso.webp" alt="Clip- DREAMKATCH- Souvenir 2- 2002[43]">
+                    <h3>DREAMKATCH - Souvenirs</h3>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/show_video/Clip- Tour de lIle- HardCore Réunion - 2006[43].html">
+                    <img src="/images/Ator/Atorianso.webp" alt="Clip- Tour de lIle- HardCore Réunion - 2006[43]">
+                    <h3>Le Tour de l'Ile - HardCore Version</h3>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/show_video/Clip- Tour de lIle- SouvnirValal - 2006[43].html">
+                    <img src="/images/Ator/Atorianso.webp" alt="Clip- Tour de lIle- SouvnirValal - 2006[43]">
+                    <h3>Le Tour de l'Ile - Souvnir'Valal</h3>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/show_video/Logo ATO simple blan.html">
+                    <img src="/images/Ator/Atorianso.webp" alt="Logo ATO simple blan">
+                    <h3>Logo ATORIANSO</h3>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/show_video/Clip Bonus Medhi & Ingrid HD.html">
+                    <img src="/images/Ator/Atorianso.webp" alt="Mariage Medhi & Ingrid">
+                    <h3>Mariage Medhi & Ingrid</h3>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/show_video/Clip- KERLAGAVA- Whos Ze BOSS - 2005[169].html">
+                    <img src="/images/Ator/Atorianso.webp" alt="KERLAGAVA - Whos Ze BOSS">
+                    <h3>KERLAGAVA - Whos Ze BOSS</h3>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/show_video/Clip- Tour de lIle de la Réunion - 2006[43].html">
+                    <img src="/images/Ator/Atorianso.webp" alt="Le Tour de l'Ile de la Réunion - Version Longue">
+                    <h3>Le Tour de l'Ile de la Réunion - Version Longue</h3>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/show_video/Dragonfly Part 1.html">
+                    <img src="/images/Ator/Atorianso.webp" alt="Dragonfly - Part 1">
+                    <h3>Dragonfly - Part 1</h3>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/show_video/Dragonfly Part 2.html">
+                    <img src="/images/Ator/Atorianso.webp" alt="Dragonfly - Part 2">
+                    <h3>Dragonfly - Part 2</h3>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/show_video/dragon noir 2 essai.html">
+                    <img src="/images/Ator/Atorianso.webp" alt="Dragon Noir 2">
+                    <h3>Dragon Noir 2</h3>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/show_video/Interviews Mr Chabot.html">
+                    <img src="/images/Ator/Atorianso.webp" alt="Interviews Mr Chabot">
+                    <h3>Interviews Mr Chabot</h3>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/show_video/neggews 1ér vers.html">
+                    <img src="/images/Ator/Atorianso.webp" alt="Neggews 1ére Version">
+                    <h3>Neggews 1ére Version</h3>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/show_video/Neggews.html">
+                    <img src="/images/Ator/Atorianso.webp" alt="Neggews">
+                    <h3>Neggews</h3>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/show_video/ZAIRE Clip.html">
+                    <img src="/images/Ator/Atorianso.webp" alt="Mariage ZAIRE">
+                    <h3>Mariage ZAIRE</h3>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/show_video/ATTALI Clip.html">
+                    <img src="/images/Ator/Atorianso.webp" alt="Mariage ATTALI">
+                    <h3>Mariage ATTALI</h3>
+                </a>
+            </div>
+            <div class="card">
+                <a href="/show_video/CHARNAY Clip.html">
+                    <img src="/images/Ator/Atorianso.webp" alt="Mariage CHARNAY">
+                    <h3>Mariage CHARNAY</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <section class="credits-section">
+            <p>&copy; 2024 Atorianzo. Tous droits réservés.</p>
+            <p>Ce site web a été créé avec le soutien précieux de <strong><a href="https://adatechschool.fr/ecole/">Ada Tech School</strong></a>____________</p>
+            <p>Réalisé par <strong>Atorianzo</strong>, basé à <strong>Lyon, France</strong>.</p>
+            <p>Chez Atorianzo Production, nous nous engageons à produire le meilleur de nous-mêmes et à réaliser les rêves de chacun et chacune.</p>
+        </section>
+        <center><p>©Copyright 2024 by Atorianzo. All rights reversed.</p></center>
+    </footer>
+    <script src="/script.js"></script>
+</body>
+</html>
+
+
+
