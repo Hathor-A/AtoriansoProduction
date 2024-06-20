@@ -1,7 +1,5 @@
 /* styles.css */
 
-/* styles.css */
-
 
 
 body {
@@ -61,8 +59,7 @@ header {
 }
 
 header .logo img {
-    height: 40px;
-    width: auto;
+    height: 50px;
     border-radius: 5px;
 
 }
@@ -173,7 +170,7 @@ footer {
 }
 
 .button-with-icon {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     padding: 10px 20px;
     font-size: 16px;
@@ -249,6 +246,7 @@ p {
 .login-section form {
     display: flex;
     flex-direction: column;
+    background-color: #333;
 }
 
 .login-section label {
@@ -291,6 +289,7 @@ p {
 .contact-section form {
     display: flex;
     flex-direction: column;
+    background-color: #111;
 }
 
 .contact-section label {
@@ -302,13 +301,13 @@ p {
     margin-bottom: 20px;
     padding: 10px;
     border-radius: 5px;
-    border: none;
+    border: black;
 }
 
 .contact-section button {
     padding: 10px;
     border-radius: 5px;
-    border: none;
+    border: black;
     background-color: #ff9900;
     color: #fff;
     font-weight: bold;
@@ -432,7 +431,7 @@ header {
 }
 
 header .logo img {
-    width: 150px;
+    height: 50px;
 }
 
 nav ul {
@@ -455,7 +454,7 @@ nav ul li a:hover {
     background-color: #555;
 }
 
-/* Media Queries */
+/*----------------------Media Queries ----------------------------------*/
 
 /* Tablets */
 @media screen and (max-width: 768px) {
@@ -469,7 +468,7 @@ nav ul li a:hover {
     }
 
     header .logo img {
-        width: 100px;
+        width: auto;
     }
 }
 
@@ -576,346 +575,96 @@ header .logo img {
 .form button:hover {
     background-color: #0056b3;
 }
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #141414;
-    color: #ffffff;
-    min-height: 100dvh;
+
+/* ---------------- Styles pour la section Musique -------------------- */
+.music-container {
     display: flex;
-    flex-direction: column;
-}
-
-a {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-}
-
-img {
-    max-width: 100%;
-    display: block;
-    
-}
-
-.icon {
-    width: 23px;
-    
-}
-
-#filters-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-}
-
-header {
-    background-color: #1f1f1f;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-}
-
-header .logo img {
-    height: 40px;
-    border-radius: 5px;
-
-}
-
-.card h3 {
-    padding: 10px;
-    font-size: 1em;
-    margin: 0;
-    text-align: center;
-}
-
-nav ul {
-    list-style-type: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #ffffff;
-    font-weight: bold;
-}
-
-nav ul li button {
-    background: none;
-    border: none;
-    color: #ffffff;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-main {
+    flex-wrap: wrap;
+    justify-content: space-around;
     padding: 20px;
 }
 
-footer {
-    background-color: #1f1f1f;
-    padding: 10px 20px;
-    padding-bottom: 10px;
-    text-align: center;
-    margin-top: auto;
-}
-.content-section {
-    margin-bottom: 40px;
-}
-
-.content-section_2 {
-    margin-bottom: 40px;
-    padding: 20px;
-}
-
-.content-section h2 {
-    margin-bottom: 20px;
-}
-
-.content-section_2 h2 {
-    margin-bottom: 20px;
-}
-
-.card-container {
-    display: flex;
-    gap: 20px;
-    overflow-x: scroll;
-}
-
-.card {
-    background-color: #333;
+.music-card {
+    background: #fff;
     border-radius: 10px;
-    overflow: hidden;
-    width: 200px;
-    flex: 0 0 auto;
-    text-decoration: none; /* Supprime la décoration de texte par défaut des liens */
-    color: inherit; /* Hérite la couleur du texte du parent */
-}
-
-.card img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.card h3 {
-    padding: 10px;
-    font-size: 1em;
-    margin: 0;
-}
-.btn{
-    width:60%;
-    height:150%;
-    background-color: rgb(91, 40, 62);
-    color:white;
-    font-size: 1.2rem;
-    border-radius:10px 0 10px 0;
-}
-
-.btn:hover{
-    font-size: 1.3rem;
-    background-color: rgb(111, 17, 58);
-}
-
-.button-with-icon {
-    display: inline-flex;
-    align-items: center;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: white;
-    background-color: #1e90ff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.button-with-icon .icon {
-    margin-right: 10px;
-}
-
-.card:hover {
-    background-color: #444; /* Change la couleur de fond au survol */
-}
-
-#btnScrollToTop {
-    display: none;
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 99;
-    font-size: 33px;
-    border: none;
-    outline: none;
-    background-color: #333;
-    color: rgb(0, 255, 229);
-    cursor: pointer;
-    padding: 15px;
-    border-radius: 20px;
-}
-
-.video-section {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin: 20px;
+    padding: 20px;
+    max-width: 300px;
     text-align: center;
-    padding: 20px;
 }
 
-.video-section video {
-    width: 80%;
-    max-width: 800px;
-    height: auto;
-}
-/*---------------------------------- VOLET LOGIN ----------------------------------------- */
-
-.login-section {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #333;
+.music-card img {
+    max-width: 50%;
     border-radius: 10px;
-    text-align: center;
 }
 
-.login-section h2 {
-    margin-bottom: 20px;
-}
-
-.login-section form {
-    display: flex;
-    flex-direction: column;
-}
-
-.login-section label {
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.login-section input {
-    margin-bottom: 20px;
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-}
-
-.login-section button {
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    background-color: #ff9900;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-/*-------------------------------- VOLET CONTACT ------------------------*/
-
-.contact-section {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #333;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.contact-section h2 {
-    margin-bottom: 20px;
-}
-
-.contact-section form {
-    display: flex;
-    flex-direction: column;
-}
-
-.contact-section label {
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.contact-section input, .contact-section textarea {
-    margin-bottom: 20px;
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-}
-
-.contact-section button {
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    background-color: #ff9900;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-/* ---------------------------------- VOLET POPUP ------------------------------------ */
-
-.side-nav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-}
-
-.side-nav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-
-.side-nav a:hover {
-    color: #f1f1f1;
-}
-
-.side-nav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-
-.openbtn {
-    font-size: 30px;
-    cursor: pointer;
-    background-color: #111;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-}
-
-.openbtn:hover {
-    background-color: #444;
-}
-
-/* ============================== CREDITS =============================> */
-.credits-section {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    border-top: 1px solid #444;
-}
-.credits-section p {
+.music-card h3 {
+    font-size: 1.5em;
     margin: 10px 0;
 }
-.credits-section strong {
-    color: #ff9900;
+
+.music-card p {
+    font-size: 1em;
+    margin: 10px 0;
+}
+
+.music-card audio {
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+/*--------- Styles pour la section Album Musique -----------------------*/
+.albums-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #1f1f1f;;
+}
+
+.album-card {
+    background: grey;
+    border-radius: 10px;
+    box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+    margin: 20px;
+    padding: 20px;
+    max-width: 300px;
+    text-align: center;
+}
+
+.album-card img {
+    height: 30px;
+    max-width: 60%;
+    border-radius: 10px;
+}
+
+.album-card h3 {
+    font-size: 1.5em;
+    margin: 10px 0;
+    color: #1f1f1f;
+}
+
+.album-card p {
+    font-size: 1em;
+    margin: 10px 0;
+    color: #1f1f1f;
+}
+
+.songs-list {
+    margin-top: 20px;
+}
+
+.song-item {
+    margin-bottom: 10px;
+}
+
+.song-item p {
+    margin: 0;
+}
+
+.song-item audio {
+    width: 100%;
+    margin-top: 5px;
 }

@@ -1,4 +1,9 @@
-           
+<?php
+session_start();
+require 'config.php';
+?>
+
+<!-----------------HTML Form pour le Header ------------------------------>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -7,49 +12,104 @@
     <title>Atorianso Production</title>
     <link rel="stylesheet" href="/styles.css">
     <link rel="stylesheet" href="/reset.css">
+    <script src="/script.js"></script>
 </head>
 <body>
     <header>
         <div class="logo">
-            <img id="Logo Prod" src="./images/Ator/AtoProd.webp" alt="Un logo" title="Logo Ato" height="200">
+            <img id="Logo Prod" src="/images/Ator/AtoProd.webp" alt="Un logo" title="Logo Ato" height="200">
         </div>
         <nav>
-<!--<ul id="filters-nav">-->
             <ul id="filters-nav">
-                <li><a href="/AtoProd.html"><img src="icons/accueil.png" class="icon">Accueil</a></li>
-                <li><a href="/html/shows.html"><img src="icons/cercle-de-jeu.png" class="icon">Publicités</a></li>
-                <li><a href="/html/clips.html"><img src="icons/bouton-facetime.png" class="icon">Clips</a></li>
-                <li><a href="/html/teasers.html"><img src="icons/bouton-jouer.png" class="icon">Teasers</a></li>
-                <li><a href="/html/spots.html"><img src="/icons/info.png" class="icon">Spots</a></li>
-                <li><a href="/html/originals.html"><img src="icons/etoile.png" class="icon">Originaux</a></li>
-                <li><a href="/html/search.html"><img src="icons/loupe.png" class="icon">Recherche</a></li>
-                <?php
-                require 'config.php';
-                    $sql = "SELECT icon FROM users WHERE username = :username";
-                    $stmt = $conn->prepare($sql);
-                    $stmt->bindParam(':username', $_SESSION['username']);
-                    $stmt->execute();
-                    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-                    $iconPath = $user['icon'];
-                if (isset($_SESSION['username'])) {
-                    echo '<li><a href="/BasSQL/profile.php"><img src="' . $iconPath . '" alt="User Icon" style="width:30px;height:30px;"></a></li>';
-                    echo '<li><a href="/BasSQL/logout.php">Déconnexion</a></li>';
-                } else {
-                    echo '<li><a href="/BasSQL/login.php">Connexion</a></li>';
-                    echo '<li><a href="/BasSQL/register.php">Inscription</a></li>';
-                }
-                ?>
+                
+                <li><a href="/basSQL/header.php"><img src="/icons/accueil.png" class="icon">Accueil</a></li>
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <li><a href="/basSQL/header.php"><img src="<?php echo $_SESSION['user_icon']; ?>" alt="User Icon" style="width:30px;height:30px;"></a></li>
+                    <?php else: ?>
+                    <?php endif; ?>
+                <?php foreach ($categories as $category): ?>
+                    <li><a href="videos.php?category=<?php echo $category['id']; ?>"><?php echo $category['name']; ?></a></li>
+                <?php endforeach; ?>
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <li><a href="/basSQL/videos.php"><img src="<?php echo $_SESSION['user_icon']; ?>" alt="User Icon" style="width:30px;height:30px;"></a></li>
+                <?php else: ?>
+                <?php endif; ?>
+                <?php foreach ($categories as $category): ?>
+                    <li><a href="shows.php?category=<?php echo $category['id']; ?>"><?php echo $category['name']; ?></a></li>
+                <?php endforeach; ?>
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <li><a href="/basSQL/shows.php"><img src="<?php echo $_SESSION['user_icon']; ?>" alt="User Icon" style="width:30px;height:30px;"></a></li>
+                <?php else: ?>
+                <?php endif; ?>
+                <?php foreach ($categories as $category): ?>
+                    <li><a href="teasers.php?category=<?php echo $category['id']; ?>"><?php echo $category['name']; ?></a></li>
+                <?php endforeach; ?>
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <li><a href="/basSQL/teasers.php"><img src="<?php echo $_SESSION['user_icon']; ?>" alt="User Icon" style="width:30px;height:30px;"></a></li>
+                <?php else: ?>
+                <?php endif; ?>
+                <?php foreach ($categories as $category): ?>
+                    <li><a href="spots.php?category=<?php echo $category['id']; ?>"><?php echo $category['name']; ?></a></li>
+                <?php endforeach; ?>
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <li><a href="/basSQL/spots.php"><img src="<?php echo $_SESSION['user_icon']; ?>" alt="User Icon" style="width:30px;height:30px;"></a></li>
+                <?php else: ?>
+                <?php endif; ?>
+                <?php foreach ($categories as $category): ?>
+                    <li><a href="originals.php?category=<?php echo $category['id']; ?>"><?php echo $category['name']; ?></a></li>
+                <?php endforeach; ?>
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <li><a href="/basSQL/originals.php"><img src="<?php echo $_SESSION['user_icon']; ?>" alt="User Icon" style="width:30px;height:30px;"></a></li>
+                <?php else: ?>
+                <?php endif; ?>
+                <?php foreach ($categories as $category): ?>
+                    <li><a href="search.php?category=<?php echo $category['id']; ?>"><?php echo $category['name']; ?></a></li>
+                <?php endforeach; ?>
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <li><a href="/basSQL/search.php"><img src="<?php echo $_SESSION['user_icon']; ?>" alt="User Icon" style="width:30px;height:30px;"></a></li>
+                <?php else: ?>
+                <?php endif; ?>
+                <li><a href="/basSQL/originals.php"><img src="/icons/etoile.png" class="icon">Originaux</a></li>
+                <li><a href="/basSQL/spots.php"><img src="/icons/info.png" class="icon">Spots</a></li>
+                <li><a href="/basSQL/teasers.php"><img src="/icons/bouton-jouer.png" class="icon">Teasers</a></li>
+                <li><a href="/basSQL/videos.php"><img src="/icons/bouton-facetime.png" class="icon">Vidéos</a></li>
+                <li><a href="/basSQL/shows.php"><img src="/icons/cercle-de-jeu.png" class="icon">Publicités</a></li>
+                <li><a href="/basSQL/search.php"><img src="/icons/loupe.png" class="icon">Recherche</a></li>
+                <li><a href="/basSQL/albums.php"><img src="/icons/music_note_sound_audio_icon.png" class="icon">Musique</a></li>
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                    <li><a href="/basSQL/albums.php"><img src="<?php echo $_SESSION['user_icon']; ?>" alt="User Icon" style="width:30px;height:30px;"></a></li>
+                    <?php else: ?>
+                    <?php endif; ?>
             </ul>
         </nav>
     </header>
     <div id="side-nav" class="side-nav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="AtoProd.html">Accueil</a>
+        <a href="/basSQL/header.php">Accueil</a>
         <a href="/basSQL/contact.php">Contact</a>
+        <?php
+            if (isset($_SESSION['username'])) {
+                echo '<li><a href="/basSQLprofile.php"><img src="/icons/icon_user/131502_god_problem_evil_red_hell_icon.png" alt="User Icon" style="width:30px;height:30px;"></a></li>';
+                echo '<li><a href="/basSQL/logout.php">Déconnexion</a></li>';
+            } else {
+                echo '<li><a href="/basSQL/login.php">Connexion</a></li>';
+                echo '<li><a href="/basSQL/register.php">Inscription</a></li>';
+            }
+        ?>
         <a href="/basSQL/login.php">Connexion</a>
+        <?php
+        $sql = "SELECT icon FROM users WHERE username = :username";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':username', $_SESSION['username']);
+            $stmt->execute();
+            $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $iconPath = $username['icon'];
+        ?>
+        <a href="/basSQL/logout.php">Déconnexion</a>
         <a href="/basSQL/registers.php">Enregistrement</a>
-        <a href="/credits.html">Crédits</a>
-        <a href="/links.html">Links</a>
+        <a href="/basSQL/profile.php">Profile</a>
+        <a href="../credits.html">Crédits</a>
+        <a href="../links.html">Links</a>
     </div>
     <span class="openbtn" onclick="openNav()">&#9776; Menu</span>
         <button onclick="scrollToTop()" id="btnScrollToTop" title="Remonter en haut de la page">&#8593</button>
@@ -592,7 +652,6 @@
         </section>
         <center><p>©Copyright 2024 by Atorianzo. All rights reversed.</p></center>
     </footer>
-    <script src="/script.js"></script>
 </body>
 </html>
 

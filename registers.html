@@ -1,36 +1,10 @@
-<?php
-session_start();
-require 'config.php';
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    $sql = "SELECT * FROM users WHERE username = :username";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':username', $username);
-    $stmt->execute();
-    
-    $user = $stmt->fetch();
-
-    if ($user && password_verify($password, $user['password'])) {
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['username'] = $user['username'];
-        $_SESSION['user_icon'] = $user['icon'];
-        header("Location: header.php");
-    exit;
-} else {
-        echo "Nom d'utilisateur ou mot de passe incorrect";
-    }
-}
-?>
-<!---------------- HTML form for login ------------------------------------------------->
+<!-- HTML form for registration -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion</title>
+    <title>Contact</title>
     <link rel="stylesheet" href="/styles.css">
     <link rel="stylesheet" href="/reset.css">
     <script src="/script.js"></script>
@@ -41,7 +15,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <img id="Logo Prod" src="/images/Ator/AtoProd.webp" alt="Un logo" title="Logo Ato" height="200">
         </div>
         <nav>
-            
                 <ul id="filters-nav">
                     <li><a href="/AtoProd.html"><img src="/icons/accueil.png" class="icon">Accueil</a></li>
                     <li><a href="/html/shows.html"><img src="/icons/cercle-de-jeu.png" class="icon">Publicités</a></li>
@@ -50,42 +23,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <li><a href="/html/spots.html"><img src="/icons/info.png" class="icon">Spots</a></li>
                     <li><a href="/html/originals.html"><img src="/icons/etoile.png" class="icon">Originaux</a></li>
                     <li><a href="/html/search.html"><img src="/icons/loupe.png" class="icon">Recherche</a></li>
-                    <li><a href="/basSQL/albums.php"><img src="/icons/music_note_sound_audio_icon.png" class="icon">Musique</a></li>
                 </ul>
         </nav>
     </header>
     <div id="side-nav" class="side-nav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="/AtoProd.html">Accueil</a>
-        <a href="/basSQL/contact.php">Contact</a>
-        <a href="/basSQL/login.php">Connexion</a>
-        <?php
-        if ($user && password_verify($password, $user['password'])) {
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['username'] = $user['username'];
-        $_SESSION['user_icon'] = $user['icon'];
-        header("Location: header.php");
-            // exit;
-        } else {
-            echo "Nom d'utilisateur ou mot de passe incorrect";
-        }
-        ?>
-        <a href="/basSQL/registers.php">Enregistrement</a>
-        <a href="/basSQL/logout.php">Déconnexion</a>
-        <a href="/BasSQL/profile.php">Profile</a>
+        <a href="AtoProd.html">Accueil</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Connexion</a>
+        <a href="registers.html">Enregistrement</a>
+        <a href="logout.html">Déconnexion</a>
         <a href="credits.html">Crédits</a>
         <a href="links.html">Links</a>
+        <a href="/projet_dataViz/index.html">Météo ClimaX</a>
     </div>
-    <span class="openbtn" onclick="openNav()">&#9776; Menu</span>
+        <span class="openbtn" onclick="openNav()">&#9776; Menu</span>
     <main>
-        <section class="login-section">
-            <h2>Connexion</h2>
-            <form action="/basSQL/header.php" method="post">
+        <section class="contact-section">
+            <h2>Inscription</h2>
+            <form action="login-form" method="post">
                 <label for="username">Nom d'utilisateur:</label>
                 <input type="text" id="username" name="username" required>
                 <label for="password">Mot de passe:</label>
                 <input type="password" id="password" name="password" required>
-                <button type="submit">Se connecter</button>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="icon">Sélectionnez votre icône :</label>
+                <select name="icon" id="icon">
+                    <option value="131481_boy_guy_male_man_men_icon.png">Icône 1</option>
+                    <option value="131482_eastern_muslim_male_arab_arabian_icon.png">Icône 2</option>
+                    <option value="131487_themis_blind_femida_justice_lawer_icon.png">Icône 3</option>
+                    <option value="131496_guard_male_man_password_power_icon.png">Icône 4</option>
+                    <option value="131500_woman_china_chinese_japanese_femine_icon.png">Icône 5</option>
+                    <option value="131502_god_problem_evil_red_hell_icon.png">Icône 6</option>
+                    <option value="131504_woman_chief_femine_sexy_lady_icon.png">Icône 7</option>
+                    <option value="131509_harlem_boss_african_chief_afroamerican_icon.png">Icône 8</option>
+                    <option value="131511_caucasian_boss_head_chief_director_icon.png">Icône 9</option>
+                    <!-- Ajouter plus d'options d'icônes ici -->
+                </select>
+                <button type="submit">S'inscrire</button>
             </form>
         </section>
     </main>
@@ -94,4 +70,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </footer>
 </body>
 </html>
-

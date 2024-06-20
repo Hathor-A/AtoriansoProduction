@@ -1,13 +1,16 @@
-/* styles.css */
+/*-----STYLES CSS ---------------------------------------------------*/
+
+/*---- BODY ---------------------------------------------------*/
 
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #141414;
     color: #ffffff;
-    min-height: 100dvh;
+    min-height: 100;
     display: flex;
     flex-direction: column;
+    line-height: 1.6;
 }
 
 a {
@@ -17,12 +20,14 @@ a {
 }
 
 img {
+    height: 50px;
     max-width: 100%;
     display: block;
     
 }
 
 .icon {
+    height: 20px;
     width: 23px;
     
 }
@@ -40,7 +45,6 @@ img {
     align-items: center;
     text-decoration: none;
     color: #818181;
-    display: block;
     transition: 0.3s;
 }
 
@@ -53,11 +57,11 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 5px;
 }
 
 header .logo img {
-    height: 40px;
+    height: 10px;
     border-radius: 5px;
 
 }
@@ -105,6 +109,10 @@ footer {
     text-align: center;
     margin-top: auto;
 }
+footer {
+    color: white;
+}
+
 .content-section {
     margin-bottom: 40px;
 }
@@ -112,6 +120,10 @@ footer {
 .content-section_2 {
     margin-bottom: 40px;
     padding: 20px;
+}
+
+.content-section_2 h2 {
+    margin-bottom: 20px;
 }
 
 .content-section h2 {
@@ -196,6 +208,18 @@ footer {
     border-radius: 20px;
 }
 
+video {
+    width: 60%;
+    max-width: 200px;
+    margin: 0 0 auto;
+    display: block;
+}
+
+p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
 .video-section {
     text-align: center;
     padding: 20px;
@@ -224,6 +248,7 @@ footer {
 .login-section form {
     display: flex;
     flex-direction: column;
+    background-color: #333;
 }
 
 .login-section label {
@@ -266,6 +291,7 @@ footer {
 .contact-section form {
     display: flex;
     flex-direction: column;
+    background-color: #111;
 }
 
 .contact-section label {
@@ -277,13 +303,13 @@ footer {
     margin-bottom: 20px;
     padding: 10px;
     border-radius: 5px;
-    border: none;
+    border: black;
 }
 
 .contact-section button {
     padding: 10px;
     border-radius: 5px;
-    border: none;
+    border: black;
     background-color: #ff9900;
     color: #fff;
     font-weight: bold;
@@ -291,6 +317,18 @@ footer {
 }
 
 /* ---------------------------------- VOLET POPUP ------------------------------------ */
+#side-nav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
 
 .side-nav {
     height: 100%;
@@ -358,7 +396,7 @@ footer {
 aside {
     flex: 1;
     margin-left: 5px;
-    background-color: none;
+    
     border-radius: 1%;
     padding: 20px;
 }
@@ -369,7 +407,7 @@ aside a {
     align-items: center;
     text-decoration: none;
     color: #818181;
-    display: block;
+    
     transition: 0.3s;
 }
 
@@ -377,10 +415,318 @@ aside a:hover {
     color: #f1f1f1;
 }
 
-
-
-
-  
-  aside li {
+aside li {
     padding-bottom: 10px;
-  }
+}
+
+/*-------------- Responsive ---------------------------------------------------------------->>*/
+
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    color: white;
+}
+
+header .logo img {
+    height: 50px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+}
+
+/*---------------------------------- Media Queries --------------------------------------------*/
+
+/*------------------------ Tablets ----------------------------*/
+@media screen and (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+
+    header .logo img {
+        width: 100px;
+    }
+}
+
+/*---------------------- Smartphones -----------------------------*/
+@media screen and (max-width: 480px) {
+.openbtn {
+    display: block;
+}
+
+nav ul {
+    display: flex;
+}
+.side-nav a {
+    font-size: 20px;
+    }
+
+.side-nav {
+    padding-top: 15px;
+}
+
+header .logo img {
+    width: auto;
+}
+}
+
+/* ------------------ Styles pour la section des commentaires ---------------------------------------------------------------->>*/
+.comments {
+    margin-top: 40px;
+    background: grey;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.comments h2 {
+    margin-top: 0;
+}
+
+.comment {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.comment img {
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.comment span {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.comment p {
+    margin: 0;
+    flex: 1;
+}
+
+.comment button {
+    background: none;
+    border: none;
+    color: #007BFF;
+    cursor: pointer;
+    font-size: 1em;
+    margin-left: 10px;
+}
+
+.comment button:hover {
+    text-decoration: underline;
+}
+
+/*--------------------------- Styles pour le formulaire de commentaire ---------------------------------------------------------------->>*/
+.form {
+    margin-top: 20px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.form textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none;
+}
+
+.form button {
+    display: block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form button:hover {
+    background-color: #0056b3;
+}
+
+/* ---------------- Styles pour la section Musique -------------------- */
+.music-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.music-card {
+    background: grey;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin: 20px;
+    padding: 20px;
+    max-width: 300px;
+    text-align: center;
+}
+
+.music-card img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.music-card h3 {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+.music-card p {
+    font-size: 1em;
+    margin: 10px 0;
+}
+
+.music-card audio {
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+/*--------- Styles pour la section Album Musique -----------------------*/
+.albums-container {
+    height: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.album-card {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    box-shadow: 0 12px 16px rgba(0,0,0,0.1);
+    margin: 60px;
+    padding: 60px;
+    max-width: 300px;
+    text-align: center;
+}
+
+.album-card img {
+    height: 60px;
+    max-width: 300%;
+    border-radius: 10px;
+    
+}
+
+.album-card h3 {
+    font-size: 1.5em;
+    margin: 10px 0;
+    color: grey;
+}
+
+.album-card p {
+    font-size: 1em;
+    margin: 10px 0;
+    color: #818181;
+}
+
+.songs-list {
+    margin-top: 20px;
+    color: grey;
+}
+
+.song-item {
+    margin-bottom: 10px;
+}
+
+.song-item p {
+    margin: 0;
+    color: grey;
+}
+
+.song-item audio {
+    width: 100%;
+    margin-top: 5px;
+}
+
+/*------------------- Autres Styles pour la section Vidéos --------------------------------------*/
+.videos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.video-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin: 20px;
+    padding: 20px;
+    max-width: 300px;
+    text-align: center;
+}
+
+.video-card img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.video-card h3 {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+.video-card p {
+    font-size: 1em;
+    margin: 10px 0;
+}
+
+.video-card video {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.comments-list {
+    margin-top: 20px;
+}
+
+.comment-item {
+    margin-bottom: 10px;
+}
+
+.comment-item p {
+    margin: 0;
+}
+
+form textarea {
+    width: 100%;
+    height: 50px;
+}
+
+

@@ -113,7 +113,7 @@ document.addEventListener(
   false
 );
 
-// ----------------------- GESTION DES FILTRES ---------------------------------------------->
+// ----------------------- GESTION DU FICHIER JSON ---------------------------------------------->
 /*
 document.addEventListener("DOMContentLoaded", () => {
   const cardContainer = document.getElementById("card-container", "card-container_2");
@@ -172,8 +172,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   fetchData();
 });
-*/
-// ----------------------- GESTION DES FILTRES du MENU HEADER ---------------------------------------------->
 
 document.addEventListener('DOMContentLoaded', () => {
   const cardContainer = document.getElementById('card-container');
@@ -222,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   fetchData();
 });
-
+*/
 // --- > -----------------------LOGIN AREA----------------------------------------->
 
   // Gestion de la connexion ----------------------------------------->
@@ -235,25 +233,27 @@ document.addEventListener('DOMContentLoaded', () => {
           //  vérification réelle
           if (username === "user" && password === "password") {
               alert("Connexion réussie !");
-              window.location.href = "header.php"; // Retour vers la page principale après connexion
+              window.location.href = "AtoProd.html"; // Retour vers la page principale après connexion
           } else {
-              alert("Nom d'utilisateur ou mot de passe incorrect.");
+              alert("Nom d\'utilisateur ou mot de passe incorrect.");
           }
       });
-      
-      
     // Fonctions pour ouvrir et fermer la navigation latérale ----------------------------------------->
-    document.querySelector(".openbtn").addEventListener("click", openNav);
-    document.querySelector(".closebtn").addEventListener("click", closeNav);
-        }
-        
-        function openNav() {
-            document.getElementById("side-nav").style.width = "250px";
-        }
-        
-        function closeNav() {
-            document.getElementById("side-nav").style.width = "0";
-        }
+    document.querySelector('.openbtn').addEventListener('click', openNav);
+    document.querySelector('.closebtn').addEventListener('click', closeNav);
+}
+
+openNav();
+closeNav();
+
+function openNav() {
+    document.getElementById('side-nav').style.width = '250px';
+}
+
+function closeNav() {
+    document.getElementById('side-nav').style.width = '0';
+}
+
 
 // Fonctions pour la gestions des likes et des pas likes ----------------------------------------->
 function likeComment(commentId) {

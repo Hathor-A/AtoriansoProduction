@@ -2,43 +2,27 @@
 session_start();
 require 'config.php';
 
-if (!isset($_SESSION['username'])) {
-    header("header.php");
-    exit;
-}
+// Récupération des catégories
+$sql_categories = "SELECT * FROM categories";
+$stmt_categories = $conn->prepare($sql_categories);
+$stmt_categories->execute();
+$categories = $stmt_categories->fetchAll(PDO::FETCH_ASSOC);
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $icon = $_POST['icon'];
-    $username = $_SESSION['username'];
-
-    $sql = "UPDATE users SET icon = :icon WHERE username = :username";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':icon', $icon);
-    $stmt->bindParam(':username', $username);
-
-    if ($stmt->execute()) {
-        echo "Icône mise à jour avec succès.";
-    } else {
-        echo "Erreur lors de la mise à jour de l'icône.";
-    }
-}
-
-// ---------------- un Fetch de l'icone utilisateur en cours ------------------------>
-$sql = "SELECT icon FROM users WHERE username = :username";
-$stmt = $conn->prepare($sql);
-$stmt->bindParam(':username', $_SESSION['username']);
-$stmt->execute();
-$user = $stmt->fetch();
-$currentIcon = $user['icon'];
+// Récupération des vidéos
+$sql_videos = "SELECT videos.*, video_views.views, categories.name as category_name FROM videos 
+               JOIN video_views ON videos.id = video_views.video_id
+               JOIN categories ON videos.category_id = categories.id";
+$stmt_videos = $conn->prepare($sql_videos);
+$stmt_videos->execute();
+$videos = $stmt_videos->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<!-----------------  HTML Form pour la selection de l'icone ---------------------->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Choisir une Icône</title>
+    <title>Section Originals</title>
     <link rel="stylesheet" href="/styles.css">
     <link rel="stylesheet" href="/reset.css">
     <script src="/script.js"></script>
@@ -49,8 +33,8 @@ $currentIcon = $user['icon'];
             <img id="Logo Prod" src="/images/Ator/AtoProd.webp" alt="Un logo" title="Logo Ato" height="200">
         </div>
         <nav>
-                <ul id="filters-nav">
-                    <li><a href="/basSQL/header.php"><img src="/icons/accueil.png" class="icon">Accueil</a></li>
+            <ul>
+                <li><a href="/basSQL/header.php"><img src="/icons/accueil.png" class="icon">Accueil</a></li>
                 <li><a href="/basSQL/shows.php"><img src="/icons/cercle-de-jeu.png" class="icon">Publicités</a></li>
                 <?php foreach ($categories as $category): ?>
                     <li><a href="videos.php?category=<?php echo $category['id']; ?>"><?php echo $category['name']; ?></a></li>
@@ -99,43 +83,71 @@ $currentIcon = $user['icon'];
                     <li><a href="/basSQL/albums.php"><img src="<?php echo $_SESSION['user_icon']; ?>" alt="User Icon" style="width:30px;height:30px;"></a></li>
                     <?php else: ?>
                     <?php endif; ?>
-                </ul>
+            </ul>
         </nav>
     </header>
-    <div id="side-nav" class="side-nav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="/AtoProd.html">Accueil</a>
-        <a href="/basSQL/contact.php">Contact</a>
-        <a href="/basSQL/login.php">Connexion</a>
-        <a href="/basSQL/registers.php">Enregistrement</a>
-        <a href="/basSQL/logout.php">Déconnexion</a>
-        <a href="/BasSQL/profile.php">Profile</a>
-        <a href="credits.html">Crédits</a>
-        <a href="links.html">Links</a>
-    </div>
-        <span class="openbtn" onclick="openNav()">&#9776; Menu</span>
+
     <main>
-        <section class="contact-section">
-    <h2>Choisir une Icône</h2>
-    <form action="/basSQL/select_icon.php" method="post">
-        <label for="icon">Sélectionnez votre icône :</label>
-        <select name="icon" id="icon">
-            <option value="131481_boy_guy_male_man_men_icon.png" <?php if ($currentIcon == '131481_boy_guy_male_man_men_icon.png') echo 'selected'; ?>>Icône 1</option>
-            <option value="131482_eastern_muslim_male_arab_arabian_icon.png" <?php if ($currentIcon == '131482_eastern_muslim_male_arab_arabian_icon.png') echo 'selected'; ?>>Icône 2</option>
-            <option value="131487_themis_blind_femida_justice_lawer_icon.png" <?php if ($currentIcon == '131487_themis_blind_femida_justice_lawer_icon.png') echo 'selected'; ?>>Icône 3</option>
-            <option value="131496_guard_male_man_password_power_icon.png" <?php if ($currentIcon == '131496_guard_male_man_password_power_icon.png') echo 'selected'; ?>>Icône 4</option>
-            <option value="131500_woman_china_chinese_japanese_femine_icon.png" <?php if ($currentIcon == '131500_woman_china_chinese_japanese_femine_icon.png') echo 'selected'; ?>>Icône 5</option>
-            <option value="131502_god_problem_evil_red_hell_icon.png" <?php if ($currentIcon == '131502_god_problem_evil_red_hell_icon.png') echo 'selected'; ?>>Icône 6</option>
-            <option value="131504_woman_chief_femine_sexy_lady_icon.png" <?php if ($currentIcon == '131504_woman_chief_femine_sexy_lady_icon.png') echo 'selected'; ?>>Icône 7</option>
-            <option value="131509_harlem_boss_african_chief_afroamerican_icon.png" <?php if ($currentIcon == '131509_harlem_boss_african_chief_afroamerican_icon.png') echo 'selected'; ?>>Icône 8</option>
-            <option value="131511_caucasian_boss_head_chief_director_icon.png" <?php if ($currentIcon == '131511_caucasian_boss_head_chief_director_icon.png') echo 'selected'; ?>>Icône 9</option>
-            <!-- Ajouter plus d'options d'icônes ici --------------->
-        </select>
-        <button type="submit">Mettre à jour</button>
-    </form>
-    </section>
+        <h1>Originals</h1>
+        <div class="videos-container">
+            <?php foreach ($videos as $video): ?>
+                <div class="video-card">
+                    <img src="<?php echo htmlspecialchars($video['thumbnail']); ?>" alt="<?php echo htmlspecialchars($video['title']); ?>">
+                    <h3><?php echo htmlspecialchars($video['title']); ?></h3>
+                    <p><?php echo htmlspecialchars($video['description']); ?></p>
+                    <p>Catégorie : <?php echo htmlspecialchars($video['category_name']); ?></p>
+                    <p>Vues : <?php echo $video['views']; ?></p>
+                    <video controls>
+                        <source src="<?php echo htmlspecialchars($video['video_path']); ?>" type="video/mp4">
+                        Votre navigateur ne supporte pas l'élément vidéo.
+                    </video>
+                    <div>
+                        <form action="like_dislike.php" method="POST">
+                            <input type="hidden" name="video_id" value="<?php echo $video['id']; ?>">
+                            <button type="submit" name="like">👍</button>
+                            <button type="submit" name="dislike">👎</button>
+                        </form>
+                    </div>
+                    <div>
+                        <h4>Commentaires</h4>
+                        <?php if (isset($_SESSION['user_id'])): ?>
+                            <form action="add_comment.php" method="POST">
+                                <input type="hidden" name="video_id" value="<?php echo $video['id']; ?>">
+                                <textarea name="comment" required></textarea>
+                                <button type="submit">Ajouter un commentaire</button>
+                            </form>
+                        <?php else: ?>
+                            <p><a href="login.php">Connectez-vous</a> pour commenter.</p>
+                        <?php endif; ?>
+                        <?php
+                        $sql_comments = "SELECT comments.*, users.username FROM comments 
+                                         JOIN users ON comments.user_id = users.id 
+                                         WHERE comments.video_id = :video_id";
+                        $stmt_comments = $conn->prepare($sql_comments);
+                        $stmt_comments->bindParam(':video_id', $video['id']);
+                        $stmt_comments->execute();
+                        $comments = $stmt_comments->fetchAll(PDO::FETCH_ASSOC);
+                        ?>
+                        <div class="comments-list">
+                            <?php foreach ($comments as $comment): ?>
+                                <div class="comment-item">
+                                    <p><?php echo htmlspecialchars($comment['username']); ?>: <?php echo htmlspecialchars($comment['comment']); ?></p>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
     </main>
+
     <footer>
+        <section class="credits-section">
+            <p>&copy; 2024 Atorianzo. Tous droits réservés.</p>
+            <p>Ce site web a été créé avec le soutien précieux de <strong><a href="https://adatechschool.fr/ecole/">Ada Tech School</strong></a>____________</p>
+            <p>Réalisé par <strong>Atorianzo</strong>, basé à <strong>Lyon, France</strong>.</p>
+            <p>Chez Atorianzo Production, nous nous engageons à produire le meilleur de nous-mêmes et à réaliser les rêves de chacun et chacune.</p>
+        </section>
         <center><p>©Copyright 2024 by Atorianzo. All rights reversed.</p></center>
     </footer>
 </body>

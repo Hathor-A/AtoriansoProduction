@@ -1,4 +1,5 @@
 <?php
+session_start();
 require 'config.php';
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -35,6 +36,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact</title>
     <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/reset.css">
+    <script src="/script.js"></script>
 </head>
 <body>
     <header>
@@ -42,16 +45,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <img id="Logo Prod" src="/images/Ator/AtoProd.webp" alt="Un logo" title="Logo Ato" height="200">
         </div>
         <nav>
-            <ul>
-                <ul id="filters-nav">
-                    <li><a href="/AtoProd.html"><img src="/icons/accueil.png" class="icon">Accueil</a></li>
-                    <li><a href="/html/shows.html"><img src="/icons/cercle-de-jeu.png" class="icon">Publicités</a></li>
-                    <li><a href="/html/clips.html"><img src="/icons/bouton-facetime.png" class="icon">Clips</a></li>
-                    <li><a href="/html/teasers.html"><img src="/icons/bouton-jouer.png" class="icon">Teasers</a></li>
-                    <li><a href="/html/spots.html"><img src="/icons/info.png" class="icon">Spots</a></li>
-                    <li><a href="/html/originals.html"><img src="/icons/etoile.png" class="icon">Originaux</a></li>
-                    <li><a href="/html/search.html"><img src="/icons/loupe.png" class="icon">Recherche</a></li>
-                </ul>
+            <ul id="filters-nav">
+                <li><a href="/AtoProd.html"><img src="/icons/accueil.png" class="icon">Accueil</a></li>
+                <li><a href="/html/shows.html"><img src="/icons/cercle-de-jeu.png" class="icon">Publicités</a></li>
+                <li><a href="/html/clips.html"><img src="/icons/bouton-facetime.png" class="icon">Clips</a></li>
+                <li><a href="/html/teasers.html"><img src="/icons/bouton-jouer.png" class="icon">Teasers</a></li>
+                <li><a href="/html/spots.html"><img src="/icons/info.png" class="icon">Spots</a></li>
+                <li><a href="/html/originals.html"><img src="/icons/etoile.png" class="icon">Originaux</a></li>
+                <li><a href="/html/search.html"><img src="/icons/loupe.png" class="icon">Recherche</a></li>
+                <li><a href="/basSQL/albums.php"><img src="/icons/music_note_sound_audio_icon.png" class="icon">Musique</a></li>
+            </ul>
         </nav>
     </header>
     <div id="side-nav" class="side-nav">
@@ -60,14 +63,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <a href="/basSQL/contact.php">Contact</a>
         <a href="/basSQL/login.php">Connexion</a>
         <a href="/basSQL/registers.php">Enregistrement</a>
-        <a href="/credits.html">Crédits</a>
-        <a href="/links.html">Links</a>
+        <a href="/basSQL/logout.php">Déconnexion</a>
+        <a href="/BasSQL/profile.php">Profile</a>
+        <a href="credits.html">Crédits</a>
+        <a href="links.html">Links</a>
     </div>
         <span class="openbtn" onclick="openNav()">&#9776; Menu</span>
     <main>
         <section class="contact-section">
             <h2>Contactez-nous</h2>
-            <form id="contact-form" method="post" >
+            <form id="contact-form" action="AtoProd.html" method="post" >
                 <label for="name">Nom:</label>
                 <input type="text" id="name" name="name" required>
                 <label for="email">Email:</label>
@@ -81,7 +86,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <footer>
         <center><p>©Copyright 2024 by Atorianzo. All rights reversed.</p></center>
     </footer>
-    <script src="/script.js"></script>
 </body>
 </html>
 
